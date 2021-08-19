@@ -16,6 +16,11 @@ public class app {
         //Bai 1
         findNumInArrays(arr);
 
+        //Bai 2
+        System.out.println("Mảng có phải mảng toàn các số nguyên tố: " + verifyPrimeArrays(arr));
+
+        //Bai 3
+        System.out.println("Mảng có lớn nhất là: " + findMax(arr));
     }
 
     public static int[][] generatedArrays(){
@@ -48,5 +53,40 @@ public class app {
         return false;
     }
 
+    public static boolean isPrimeNumber(int n) {
+        if (n < 2) {
+            return false;
+        }
+        int squareRoot = (int) Math.sqrt(n);
+        for (int i = 2; i <= squareRoot; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+
+    public static boolean verifyPrimeArrays(int[][] arr){
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (isPrimeNumber(arr[i][j])) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static int findMax(int[][] arr){
+        int max = arr[0][0];
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] > max)
+                    max = arr[i][j];
+            }
+        }
+        return max;
+    }
 
 }
